@@ -1,0 +1,22 @@
+/* css for download pages */
+
+.selectbuttonbar {
+    margin-bottom: 40px;
+}
+
+.selectbuttonbar span {
+    margin: 0px 60px;
+    background-color:  #0c3d6e;
+    color: #fff;
+    padding: 20px 16px 16px 16px;
+}
+
+.selectbuttonbar span a {
+    color: #fff;
+    font-size: 200%;
+    font-family: "fauna one";
+}
+
+.selectbuttonbar span a:link, .selectbuttonbar span a:visited {
+    text-decoration: none;
+}
