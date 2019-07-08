@@ -9,17 +9,18 @@ People are listed in alphabetical order.
 ## _Authors_ are people who contributed new code or (many) patches
 
   * Anjo Anjewierden (initial developer of XPCE, the SWI-Prolog native graphics system)
-  * Anne Ogborn (website, tutorials, lots of comments)
+  * Anne Ogborn (website, tutorials, teaching, lots of comments)
   * Benoit Desouter (initial version of tabling)
   * Carlo Capelli (Qt-based console)
+  * David Warren (Tabling and XSB integration)
   * Degski ([[FANN][http://leenissen.dk/]], Windows porting)
+  * Douglas Miles (verify_attributes/3 hook)
   * Fabrizio Riguzzi (initial version of mode directed tabling)
   * Giorgos Stoilos (isub/4: fuzzy string matching)
   * Jan Wielemaker (main developer and maintainer)
   * Jan van der Steen (SSL interface)
   * Jeff Rosenwald (TIPC interface, Google protocol buffers)
   * Keri Harris (testing, patches, MinGW port, lock free tables)
-  * Douglas Miles (verify_attributes/3 hook)
   * Kuniaki Mukai (implementation of =@=/2 (variant/2)
   * Leslie de Koninck (CLP(QR) port)
   * Marcus Uneson (library(optparse))
@@ -30,12 +31,14 @@ People are listed in alphabetical order.
     discussion about embedding other languages)
   * Paul Singleton (JPL, interface to Java)
   * Paulo Moura (provided library(yall), Macports maintainer)
+  * Raivo Laanemets (wasm port)
   * Randy Sharp (fixing many typos in the documentation; ongoing work)
   * Richard O'Keefe (sort/2, libraries, extensive comments)
   * Roberto Bagnara and Abramo Bagnara (MinGW port, helped fixing many bugs)
   * Sebastian Sardina (enhancements and debugging JPL)
   * Samer Abdallah ([[OSC, MIDI, Random and Matlab interfaces][</contrib/SamerAbdallah/>]])
   * Sergey Tikhonov (testing multi-threading, patches)
+  * Terri Swift (Tabling and XSB integration)
   * Tom Schrijvers (CHR, initial constraint libraries)
   * Torbjörn Lager ([Pengines](</pldoc/package/pengines.html>))
   * Ulrich Neumerkel (testing, `purification', patches)
@@ -48,27 +51,30 @@ People are listed in alphabetical order.
 ## Package Maintainers
 
   * Eugeniy Meshcheryakov - Official Ubuntu package
-  * Yves Raimond - Debian PPA (with Eugeniy)
   * Lev Lamberov - Debian packages
+  * Yves Raimond - Debian PPA (with Eugeniy)
 
 ## Other _Contributors_
 
   * Bart Demoen (advice, notably constraint infrastructure)
   * Bob Wielinga (finding projects to support SWI-Prolog)
+  * [[fastly.png;title="Fastly .com",align="center"][http://www.fastly.com/]] Fastly.com Donates content distribution network services
+  * [[CWI.png;title="CWI logo",align="center",width="125px"][http://www.cwi.nl/]]
+    (providing a new home)
   * Guus Schreiber (providing a new home at the VU University, Amsterdam)
   * [[securitease.png;title="SecuritEase",align="center"][http://www.securitease.co.nz/]] Mike Elston;
     testing, funding of GMP, SSL and the 5.9.x stack-shifter
+  * Ian Andrich - publicity for online Prolog class
+  * James NV Cash - infrastructure support for online Prolog classes.
+  * [[Jessica Chan][http://jessicachanstudios.com/]] (design of new website)
+  * [[kyndi.png;title="Kyndi, inc.",align="center"][http://www.kyndi.com/]] Kyndi Sponsored library(yall)
+  * Richard Siddall (ongoing support of this website's servers and CDN)
+  * [[osllogo.png;title="=Oregon State University Open Source Lab=",align="center"][http://osuosl.org/]] Oregon State University Open Source Lab Donates US server for swi-prolog.org
   * Paulo Moura (testing, provides MacOS ports, made
     [[Logtalk][http://logtalk.org/]] available)
   * Steve Moyle (funding of PlUnit and PlDoc)
-  * [[Steve Reeves][http://www.pixelmagic.co.nz/]] (design of the logo)
-  * [[Jessica Chan][http://jessicachanstudios.com/]] (design of new website)
-  * [[osllogo.png;title="=Oregon State University Open Source Lab=",align="center"][http://osuosl.org/]] Oregon State University Open Source Lab Donates US server for swi-prolog.org
-  * [[fastly.png;title="Fastly .com",align="center"][http://www.fastly.com/]] Fastly.com Donates content distribution network services
-  * [[kyndi.png;title="Kyndi, inc.",align="center"][http://www.kyndi.com/]] Kyndi Sponsored library(yall)
   * [[simularity.png;title="Simularity, inc.",align="center",width="125px"][http://simularity.com/]] Simularity, Inc. Sponsored JavaPengines and RubyPengines.
-  * [[CWI.png;title="CWI logo",align="center",width="125px"][http://www.cwi.nl/]]
-    (providing a new home)
+  * [[Steve Reeves][http://www.pixelmagic.co.nz/]] (design of the logo)
 
 ---++ _|Open Source|_ projects used by SWI-Prolog
 
