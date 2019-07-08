@@ -26,7 +26,6 @@
   * *|Customising SWI-Prolog|*
     * [[Site and personal initialisation][PlInitialisation.txt]]
     * [[How do I enlarge the default stacks?][StackSizes.txt]]
-    * [[Syntax error messages with character index?][SyntaxErrorMessage.txt]]
     * [[Controlling colored output on the terminal][ColorConsole.txt]]
     * [[How do I change the fonts in PceEmacs and the debugger?][PceFonts.txt]]
     * [[I want normal ^X, ^C, ^V, ^S, ^P, etc.][WindowsAccelerators.txt]]
@@ -34,13 +33,16 @@
 
   * *|Editing|*
     * [[Select an editor][BindEditor.txt]]
-    * [[Using SWI-Prolog with GNU-Emacs][GnuEmacs.txt]]
+    * [[Using SWI-Prolog with GNU Emacs][GnuEmacs.txt]]
     * [[Using PceEmacs][PceEmacs.txt]]
 
   * *|How to ...|*
     * [[Make a log of the session?][MakeLog.txt]]
     * [[Read Prolog case data from a file?][ReadDynamicFromFile.txt]]
     * [[Can I make an executable?][MakeExecutable.txt]]
+
+  * *|Using SWI-Prolog for web services|*
+    * [Can I replace a LAMP stack with SWI-Prolog](PrologLAMP.txt)
 
   * *|Using SWI-Prolog on MS-Windows|*
     * [[Cut/copy/paste from the plwin.exe console][WinCopy.txt]]

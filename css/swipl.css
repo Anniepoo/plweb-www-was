@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Fauna+One);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Fauna+One);
 
 body {
     margin: 0px;
@@ -19,14 +19,10 @@ body {
     background-image: url("/icons/bluegrad.png");
     background-repeat: repeat-x;
     color:  #FFF;
-    height: 38px;
+    border: 5px;
 }
 
 #upper-header form {
-    display: inline;
-}
-
-#upper-header form div {
     display: inline;
 }
 
@@ -34,17 +30,15 @@ body {
     width: 960px;
     margin-left: auto;
     margin-right: auto;
-    padding: 8px 0px;
-}
-
-#upper-header input {
-    display: inline;
-    width: 227px;
-    height: 19px;
+    padding: 0px 0px;
 }
 
 #submit-for {
     display: none !important;
+}
+
+#dyknow-container {
+    width: 99%;
 }
 
 #dyknow-container  .lbl {
@@ -67,13 +61,13 @@ body {
 { color: #f0f;
 }
 
-#search-form input {
-    display: inline;
+#search-container {
+    white-space: nowrap;
 }
 
-#search-container {
-    display: inline;
-    float:  right;
+#search-container input {
+    width: 227px;
+    height: 19px;
 }
 
 #tag-line-area {
@@ -91,11 +85,16 @@ body {
     height: 112px;
 }
 
+#header-line-area {
+    margin: 2ex auto;
+    width: 900px;
+}
+
+#header-line-area td {
+    vertical-align: middle;
+}
+
 #header-line-area img.owl {
-    margin-left: 104px;
-    margin-right: 47px;
-    margin-top: 30px;
-    margin-bottom: 2px;
     height: 84px;
     width: 102px;
 }
@@ -104,11 +103,17 @@ body {
     width: 200px;
 }
 
+#logo {
+    padding-right: 3ex;
+    white-space: nowrap;
+}
+
 .primary-header {
      font-family: Source Sans Pro, sans;
      font-size: 40px;
      font-weight: 700;
      color:  #333333;
+     width: 99%;
 }
 
 div.file-buttons {
@@ -124,13 +129,6 @@ div.file-buttons {
 div.file-buttons img {
     width: 32px;
     height: 32px;
-}
-
-span.primary-header {
-    vertical-align: middle;
-    position: absolute;
-    margin-top: 40px;
-    margin-left:  0;
 }
 
 .tagline {
@@ -160,60 +158,68 @@ span.tagline {
 }
 
 .menubar {
-  /*  border: 1px solid #d47618; */
-    background-image: url("/icons/menubkgnd.png");
-    background-repeat: repeat-x;
-    height: 36px;
+    border: 2px solid #d57719;
+    background: #ef9439;
     border-radius: 3px;
-    line-height: 36px;
 }
 
-.menubar-container {
-  /*  padding: 0 20px 0 20px;   */
-  padding: 0;
- border-right: 2px solid #d57719;
-  border-radius: 5px;
+ul.menubar-container {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-align: center;
 }
 
-.menubar-container > li {
-    height: 36px;
-    display: inline;
+ul.menubar-container > li {
+    line-height: 34px;
+    text-align: left;
+    display: inline-block;
     color: #FFF;
-    padding: 3px 18px;
+    padding: 0px 18px;
     border-left: 2px solid #d57719;
     font-size: 14pt;
     font-weight: 700;
 }
 
-.menubar-container > li > a:link {
+ul.menubar-container > li:first-child {
+    border-left: 0px;
+}
+
+ul.menubar-container a {
+    display: block;
+}
+
+ul.menubar-container > li > a:link {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 14pt;
+    font-weight: 700;
+}
+ul.menubar-container > li > a:visited {
     color: #FFF;
     text-decoration: none;
 }
-.menubar-container > li > a:visited {
-    color: #FFF;
-    text-decoration: none;
-}
-.menubar-container > li > a:hover {
+ul.menubar-container > li > a:hover {
     color: #d9d8cf;
-    text-decoration: none;
+    text-decoration: underline;
 }
-.menubar-container > li > a:active {
+ul.menubar-container > li > a:active {
     color: #d57719;
     text-decoration: none;
 }
 
-.menubar-container > li > ul {
+ul.menubar-container > li > ul {
     display: none;
 }
 
-.menubar-container > li > ul.mouseovermenu {
+ul.menubar-container > li > ul.mouseovermenu {
     display: block;
     position: absolute;
     float: left;
     z-index: 10;
 }
 
-.menubar-container > li > ul.activemenu {
+ul.menubar-container > li > ul.activemenu {
     display: block;
     position: absolute;
     float: left;
@@ -221,14 +227,14 @@ span.tagline {
 }
 
 /* any dropdown box */
-.menubar-container > li ul {
+ul.menubar-container > li ul {
     background-color: #ffd8b2;
     border: 1px solid #d47618;
     padding: 0;
 }
 
 /* any dropdown box item */
-.menubar-container > li ul li {
+ul.menubar-container > li ul li {
     min-width: 199px;
     padding-left: 8px;
 }
@@ -296,9 +302,18 @@ span.tagline {
 }
 
 .contents
-{ margin: 20px 30px 45px 30px;
+{ margin: 20px 0px 45px 0px;
   background-color: #f6f5ee;
   padding: 20px 27px;
+}
+
+#forum_embed
+{ display:block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+  height: 1000px;
+  box-sizing: border-box;
 }
 
 /* overrule above.  This is handled by PlDoc itself */
@@ -309,6 +324,17 @@ span.tagline {
   background-color: inherit;
 }
 
+.contents.pldoc div.navcontent
+{ margin-left: 17em;
+  margin-right: 0px;
+}
+
+.contents.pldoc div.navtree
+{ margin-left: 0px;
+  width: 16em;
+}
+
+
 #blurb {
     margin-left: auto;
     margin-right: auto;
@@ -316,10 +342,7 @@ span.tagline {
 }
 
 #blurb div {
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 45px;
-    margin-bottom: 45px;
+    margin: 45px 0px;
     background-color: #FFF;
     padding: 25px 27px;
     font-size: 20pt;
@@ -330,19 +353,15 @@ span.tagline {
     margin-left: auto;
     margin-right: auto;
     width: 960px;
+    margin-bottom: 45px;
 }
 
-#cta-container  div {
-    width: 270px;
+#cta-container  td {
+    width: 33%;
     font-family: Fauna One, sans;
     font-size: 18pt;
-    padding-top: 22px;
-    padding-bottom: 22px;
-    text-align: center;
+    padding: 0px;
     vertical-align: middle;
-    padding-left: 25px;
-    padding-right: 25px;
-    float: left;
     color: #0a3d6c;
 }
 

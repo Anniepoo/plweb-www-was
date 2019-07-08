@@ -1,9 +1,44 @@
 ---+ How to submit patches?
 
-This page describes how to submit patches if you find a bug or missing functionality.  There are several options, which are described in decreasing
-preference.
+This page describes how to submit patches if you find a bug or missing
+functionality. There are several options, which are described in
+decreasing preference.
 
----++ Submit as GIT patch-sets (preferred)
+---++ Using GitHub pull requests (new, preferred)
+
+As of May 1, 2014, the primary repository of SWI-Prolog is at
+[GitHub](https://github.com/SWI-Prolog).
+
+GitHub has a
+[good description](https://help.github.com/articles/using-pull-requests)
+of submitting patches using _pull requests_.
+
+Note that quite a few of the remarks below also apply to using GitHub, notably
+those about dealing with packages that are represented as _git submodules_.
+
+### A note about GitHub forks
+
+You cannot _fork_ on GitHub and _next_ clone.  If you try to do so, all submodules are resolved against _your_ GitHub account and thus you must clone _all_ repositories from the SWI-Prolog organization.  Much better is to _clone_ and _then_ _fork_:
+
+```
+git clone https://github.com/SWI-Prolog/swipl-devel.git
+git submodule update --init
+```
+
+Now you have a complete working source tree you can compile and modify.  If you want to create a _pull request_ against one of the git repos,  _now fork it on github if you did not already do so_, go to the top directory of the repo on your machine and run (you can also use ``https://``)
+
+```
+git remote add myfork git@github.com:me/repo.git
+```
+
+Now, after creating a _topic branch_, push it to github using
+
+```
+git push myfork mytopic:mytopic
+```
+
+
+---++ Submit as GIT patch-sets (old, still good)
 
 Download the system as described in [[Accessing SWI-Prolog source via GIT][</git.html>]].  First we describe patches to the core system.  Patches
 to packages that are distributed as git submodules are described below.
@@ -72,7 +107,7 @@ do this by switching branches, and update as usual:
   ==
   % git checkout master
   % git pull
-  % ./prepare
+  % git submodule update
   ==
 
 Now, there are some options that may apply.
@@ -145,13 +180,13 @@ You can also keep a copy and use the diff command to produce a classical
 patch file as below.  diff should be available on virtually any Unix system
 and there are many ports for Windows.  Use the unified (=|-u|=) style to
 include context.
-  
+
   ==
   % cp somefile somefile.orig
   <edit, test, etc>
   % diff -u somefile.orig somefile > my-patches
   ==
-  
+
 This is worse than using =|git diff|= because git diff includes information
 on the exact version that is patched, which can help us if there are other
 conflicting patches.  In addition to comments on the why and what, please

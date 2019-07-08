@@ -1,40 +1,4 @@
----+ SWI-Prolog on Debian and Ubuntu Linux
-
-| Debian release | Wheezy(7.0)  |
-| Ubuntu release | 12.04, 12.10, 13.04 |
-| Mint | 14 |
-| SWI-Prolog release | 6.3.14 |
-| Package page | http://packages.debian.org/swi-prolog |
-| (Debian) Maintainer | Eugeniy Meshcheryakov |
-
-
----++ Status
-
-Debian Squeeze and derived distributions come with a properly packaged but old (version 5.10.4) SWI-Prolog.  We advice to compile the sources on older Debian derived distros or you need a fairly recent version.
-
----++ PPA (Ubuntu Personal Package Archive)
-
-There are PPAs for [SWI-Prolog stable](https://launchpad.net/~swi-prolog/+archive/stable) and [SWI-Prolog development](https://launchpad.net/~swi-prolog/+archive/devel) based on the official Debian packaging structure and corresponding SWI-Prolog release.  This PPA version can be installed using the commands below in Ubuntu 12.04 and 13.04:
-
-These PPAs are updated with every new release.  Thanks to Yves Raimond for setting up the PPA snd Eugeniy Meshcheryakov for creating the Debian configuration.
-
----+++ Stable versions
-
-  ==
-  % sudo apt-add-repository ppa:swi-prolog/stable
-  % sudo apt-get update
-  % sudo apt-get install swi-prolog
-  ==
-
----+++ Development versions
-
-  ==
-  % sudo apt-add-repository ppa:swi-prolog/devel
-  % sudo apt-get update
-  % sudo apt-get install swi-prolog
-  ==
-
----++ Dependencies
+# Prerequisites for Debian based systems (Ubuntu, Mint, ...)
 
 Use the following commands to obtain all dependencies for a full build
 from source. Note that there are no known version dependencies on any of
@@ -43,44 +7,93 @@ these package use =|apt-cache search <name>|= to find an alternative,
 where <name> is e.g., =libunwind= (i.e., remove version and details).
 Some remarks:
 
+  - ``ninja-build`` may be dropped, building using `make`.
   - It is possible to use =iodbc= instead of =unixodbc= for ODBC
     connectivity.
   - The SWI-Prolog Java interface (JPL) works with many Java development
-    kits, not only =|openjdk-7-jdk|=.
-  - The package =|libarchive-dev|= is needed as of 6.1.4 for libarchive,
+    kits, not only =|openjdk-8-jdk|=.
+  - The package =|libarchive-dev|= is needed for library(archive),
     which is needed by pack_install/1.
-  - The package =|libossp-uuid-dev|= is needed as of 6.3.4 for
-    library(uuid), which is needed for ClioPatria's SPARQL engine.
+  - The package =|libossp-uuid-dev|= is needed for library(uuid).
+  - The package =|libdb-dev|= is needed for
+    library(bdb), the BerkeleyDB embedded database interface.
+  - The package =|libreadline-dev|= and =|libedit-dev|= both provide
+    command line editing for interactive usage.  None is strictly
+    needed and one of them suffices. =|libedit-dev|= is the preferred
+    command line editor.
+  - =libunwind= only simplifies debugging in case of a system crash.
+  - `cmake` must be at least version 3.5 See
+    [CMAKE.md](https://github.com/SWI-Prolog/swipl-devel/blob/master/CMAKE.md)
 
-==
+```shell
 sudo apt-get install \
-        build-essential autoconf curl chrpath \
-        ncurses-dev libreadline-dev libunwind8-dev \
+        build-essential cmake ninja-build pkg-config \
+        ncurses-dev libreadline-dev libedit-dev \
+	libunwind-dev \
         libgmp-dev \
-        libxext-dev libice-dev libjpeg-dev libxinerama-dev libxft-dev \
-        libxpm-dev libxt-dev pkg-config \
         libssl-dev \
         unixodbc-dev \
-        openjdk-7-jdk junit \
         zlib1g-dev libarchive-dev \
-	libossp-uuid-dev
-==
+	libossp-uuid-dev \
+        libxext-dev libice-dev libjpeg-dev libxinerama-dev libxft-dev \
+        libxpm-dev libxt-dev \
+	libdb-dev \
+	libpcre3-dev \
+        libyaml-dev \
+        openjdk-8-jdk junit
+```
 
 Note that older Debian based distributions, including the Debian
 stable *|(Squeeze (6.0))|* ship with =|libunwind7-dev|= instead of
-=|libunwind8-dev|=.
+=|libunwind-dev|=.
+
+[Raspbian](<Raspbian.txt>) does not have =libunwind=. Just leave it out.
+All other packages are available. SWI-Prolog versions 7.3.x require
+*|gcc 4.8 or later|*, provided by Raspbian GNU/Linux 8.0 (jessie). Total
+build time on a Raspberry pi model 2, including all packages is 22
+minutes. If you want to reduce resources, the following packages are
+optional:
+
+  $ openjdk-8-jdk junit :
+  Without you do not have Java connectivity (JPL)
+  $ libxext-dev libice-dev libjpeg-dev libxinerama-dev libxft-dev libxpm-dev libxt-dev :
+  Without these _xpce_ will not be built and the graphical IDE tools are
+  not available.
+  $ unixodbc-dev :
+  Without, you have no ODBC database connectivity (e.g., MySQL)
+  $ libssl-dev :
+  Without, you have no SSL (and HTTPS) support.
+  $ libgmp-dev :
+  Without, you lack unbounded integer support, rational numbers, good
+  random number generators, etc.
+  $ libpcre3-dev :
+  Without, you have no regular expression support (library(pcre)).
+  $ libyaml-dev :
+  Without you have no YAML support (library(yaml)).
+
+Note that including GMP support makes the memory footprint bigger, but
+mostly if you have no other applications depending on GMP. All the other
+optional components are only loaded if you actually use them.
 
 
----+++ Dependencies to build the documentation
+### Prerequisites to build the documentation
 
-The generated documentation is included the source archives and downloaded by the =prepare= script when installing from the git source.  To rebuild the documentation, the following packages are needed.  Check =|man/README|= for
-further instructions.
+The HTML documentation is built as part of the default build procedure
+and only depends on Prolog itself and some of its packages. The
+dependencies below are needed to build the PDF documentation.
+Configuring the build to include the PDF docs requires
 
-==
+    cmake -DBUILD_PDF_DOCUMENTATION=ON ...
+
+```shell
 sudo apt-get install \
 	texlive-latex-extra \
+        texlive-font-utils \
 	texlive-fonts-extra \
 	texlive-fonts-extra-doc \
 	texlive-fonts-recommended \
 	texlive-fonts-recommended-doc
-==
+```
+
+Now that after you have installed dependencies, return to [Build
+SWI-Prolog from source](<unix.html>) to complete installation.

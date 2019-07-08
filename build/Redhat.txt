@@ -1,31 +1,34 @@
----+ SWI-Prolog on Redhat (Fedora, RHEL, CentOS)
+# SWI-Prolog on Redhat (Fedora, RHEL, CentOS)
 
-| Fedora release | 21 |
+| Fedora release | 23, 24, 25, 28 |
 | RHEL | 5 and 6 |
 | CentOS | 5 |
-| SWI-Prolog release | 6.6.1 |
+| SWI-Prolog release | 8.0.x and 8.1.x |
 | Package page | <http://koji.fedoraproject.org/koji/buildinfo?buildID=485155> |
 | Maintainer | Petr Pisar |
 
----++ Status
+## Status
 
-We have not yet evaluated this release against the guidelines.txt.
+This page was written for SWI-Prolog pre-dating the migration to
+the CMake configure and build infrastructure. The page has been updated,
+but the details have not been tested. Please report issues.
 
----++ Dependencies
+## Dependencies
 
-Use the following commands to obtain all dependencies for a full build from source. 
+Use the following commands to obtain all dependencies for a full build
+from source.
 
-==
-yum install \
-  autoconf \
-  chrpath \
+```
+dnf install \
+  cmake \
+  ninja-build \
   libunwind \
   freetype-devel \
   gmp-devel \
-  java-1.6.0-openjdk-devel \
+  java-1.8.0-openjdk-devel \
   jpackage-utils \
   libICE-devel \
-  libjpeg-devel \
+  libjpeg-turbo-devel \
   libSM-devel \
   libX11-devel \
   libXaw-devel \
@@ -40,52 +43,30 @@ yum install \
   openssl-devel \
   pkgconfig \
   readline-devel \
+  libedit-devel \
   unixODBC-devel \
   zlib-devel \
   uuid-devel \
-  libarchive-devel
-==
+  libarchive-devel \
+  libyaml-devel
+```
 
----++ Building the RPM
+The above is tested on Fedora 23, 24 and 25.  On Fedora < 23 the
+following may be different:
 
-  1. Setup RPM build environment (according to
-  [[CreatingPackageHowTo][http://fedoraproject.org/wiki/PackageMaintainers/CreatingPackageHowTo]])
+  - `dnf` was once called `yum`,
 
-    ==
-    % sudo yum groupinstall "Development Tools"
-    % sudo yum install rpmdevtools
-    % rpmdev-setuptree
-    ==
+  - `uuid-devel` was once called `libossp-uuid-devel`,
 
-  2. Download and unpack Source RPM from below or the
-     [[Project page][http://koji.fedoraproject.org/koji/packageinfo?packageID=3471]]
+  - before `java-1.8.0-openjdk-devel` there was
+    `java-1.7.0-openjdk-devel`,
 
-    ==
-    % rpm -ihv --nomd5 http://download.fedora.redhat.com/pub/fedora/linux/development/15/source/SRPMS/pl-5.10.2-3.fc15.src.rpm
-    ==
+  - `libjpeg-turbo-devel` was once called `libjpeg-devel`.
 
-  3. Install development libraries needed to compile SWI-Prolog:
+## Building the RPM
 
-    ==
-    % cd ~/rpmbuild
-    % su
-    % sudo yum install java-1.6.0-openjdk-devel
-    % sudo yum install `grep ^BuildRequires SPECS/pl.spec | awk 'NF==2 {print $2}'`
-    ==
+You can build an RPM package  from   the  sources, for example to deploy
+locally using the CMake CPack tool. See  `CMAKE.md` in the top directory
+of the sources.
 
-  4. Build SWI-Prolog
-
-    ==
-    % rpmbuild -ba SPECS/pl.spec
-    ==
-    or
-    ==
-    % rpmbuild -ba SPECS/swipl-5.10.2-3.spec
-    ==
-
-On RHEL 5 it may become necessary to disable SELinux temporarily to
-build the RPM because the built library libswipl.so requires text
-relocation.
-
-@see [[Patched RPM spec file by Joachim Katzer][<https://lists.iai.uni-bonn.de/pipermail/swi-prolog/attachments/20110321/7c855b10/attachment.ksh>]]
 @see LinuxDistro.txt

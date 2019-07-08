@@ -69,6 +69,28 @@ td.dl_file p
   margin-bottom: 0px;
 }
 
+div.checksum
+{ margin-top: 3px;
+  font-size: 90%;
+}
+
+div.checksum span.checksum
+{ margin-left: 1ex;
+  font-family: monospace;
+}
+
+span.checkum-header
+{ font-weight: bold;
+}
+
+div.machine-download
+{ margin-top: 5px;
+  margin-bottom: 20px;
+  font-size: 90%;
+  font-style: italic;
+  margin-left: 10%;
+}
+
 /* Messages */
 
 div.silent
@@ -91,10 +113,6 @@ pre.error
 
 span.acmatch
 { background-color: #bbf;
-}
-
-#search-container
-{ padding-right: 0.5em;
 }
 
 li.ui-menu-item
@@ -127,11 +145,7 @@ li.ui-menu-item
 
 /* Wiki editing */
 
-table.wiki_edit .git_msg
-{ width: 100%;
-}
-
-table.wiki_edit .git_comment
+#git_msg, #git_comment
 { width: 100%;
 }
 
